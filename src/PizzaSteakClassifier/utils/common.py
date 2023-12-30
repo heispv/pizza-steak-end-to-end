@@ -96,3 +96,19 @@ def encode_image_into_base64(img_path):
         imgstr = base64.b64encode(f.read())
     
     return imgstr.decode("utf-8")
+
+@ensure_annotations
+def get_size(the_path: Path) -> str:
+    """
+    Get the size of a file in kilobytes.
+
+    Args:
+        path (Path): The path to the file.
+
+    Returns:
+        str: The size of the file in kilobytes, rounded to 4 decimal places.
+
+    """
+    size_kb = round(os.path.getsize(the_path) / 1024, 4)
+    return_str = f"{size_kb} KB"
+    return return_str
