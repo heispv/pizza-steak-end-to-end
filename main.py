@@ -1,14 +1,7 @@
-from PizzaSteakClassifier import logger
 from PizzaSteakClassifier.pipeline.stage_01_data_ingestion import DataIngestionPipeline
+from PizzaSteakClassifier.pipeline.stage_02_prepare_base_model import PrepareBaseModelPipeline
 
 
-
-STAGE_NAME = "Data Ingestion"
-try:
-    logger.info(f"-------------Running stage: {STAGE_NAME}-------------")
-    pipeline = DataIngestionPipeline()
-    pipeline.main()
-    logger.info(f"-------------Completed stage: {STAGE_NAME}------------\nx==============================x\n")
-except Exception as e:
-    logger.exception(f"Exception in stage: {STAGE_NAME}")
-    raise e
+if __name__ == "__main__":
+    DataIngestionPipeline().run()
+    PrepareBaseModelPipeline().run()
