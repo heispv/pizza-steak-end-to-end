@@ -20,10 +20,10 @@ class ConfigurationManager:
         create_directories([config.root_dir])
 
         data_ingestion_config = DataIngestionConfig(
-            root_dir = config.root_dir,
-            source_url = config.source_url,
-            local_data_file = config.local_data_file,
-            unzip_dir = config.unzip_dir
+            root_dir = Path(config.root_dir),
+            source_url = str(config.source_url),
+            local_data_file = Path(config.local_data_file),
+            unzip_dir = Path(config.unzip_dir)
         )
 
         return data_ingestion_config
@@ -38,11 +38,11 @@ class ConfigurationManager:
             root_dir = Path(config.root_dir),
             base_model_path = Path(config.base_model_path),
             updated_base_model_path = Path(config.updated_base_model_path),
-            params_image_size = params.IMAGE_SIZE,
-            params_learning_rate = params.LEARNING_RATE,
-            params_include_top = params.INCLUDE_TOP,
-            params_weights = params.WEIGHTS,
-            params_classes = params.CLASSES
+            params_image_size = list(params.IMAGE_SIZE),
+            params_learning_rate = float(params.LEARNING_RATE),
+            params_include_top = bool(params.INCLUDE_TOP),
+            params_weights = str(params.WEIGHTS),
+            params_classes = int(params.CLASSES)
         )
 
         return prepare_base_model_config
