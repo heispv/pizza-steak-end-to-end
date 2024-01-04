@@ -1,6 +1,6 @@
 from PizzaSteakClassifier.constants import *
 from PizzaSteakClassifier.utils.common import read_yaml_file, create_directories
-from PizzaSteakClassifier.entity.config_entity import DataIngestionConfig, PrepareBaseModelConfig
+from PizzaSteakClassifier.entity.config_entity import DataIngestionConfig, PrepareBaseModelConfig, PrepareCallbackConfig
 
 class ConfigurationManager:
     def __init__(
@@ -46,3 +46,19 @@ class ConfigurationManager:
         )
 
         return prepare_base_model_config
+    
+    def get_prepare_callback_config(self) -> PrepareCallbackConfig:
+        config = self.config
+
+        create_directories([
+            Path(config.prepare_callbacks.tensorboard_log_dir),
+            Path(config.prepare_callbacks.checkpoint_dir)
+        ])
+
+        prepare_callback_config = PrepareCallbackConfig(
+            root_dir = Path(config.artifacts_root),
+            tensorboard_log_dir = Path(config.prepare_callbacks.tensorboard_log_dir),
+            checkpoint_dir = Path(config.prepare_callbacks.checkpoint_dir)
+        )
+
+        return prepare_callback_config
