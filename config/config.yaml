@@ -15,4 +15,4 @@ base_model_preparation:
 prepare_callbacks:
   root_dir: artifacts/prepare_callbacks
   tensorboard_log_dir: artifacts/prepare_callbacks/tensorboard_logs
-  checkpoint_dir: artifacts/prepare_callbacks/checkpoint_dir
+  checkpoint_dir: artifacts/prepare_callbacks/checkpoint_dir/model.h5
