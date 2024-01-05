@@ -24,7 +24,7 @@ class PrepareBaseModel:
         input_layer = tf.keras.layers.Input(shape = input_shape)
         x = base_model(input_layer, training = False)
         x = tf.keras.layers.GlobalAveragePooling2D()(x)
-        x = tf.keras.layers.Flatten()(x)
+        x = tf.keras.layers.Dense(units=20, activation = 'relu')(x)
         output_layer = tf.keras.layers.Dense(units = num_classes, activation = 'softmax')(x)
         
 
@@ -32,7 +32,7 @@ class PrepareBaseModel:
 
         full_model.compile(
             optimizer = tf.keras.optimizers.Adam(learning_rate = learning_rate),
-            loss = tf.keras.losses.CategoricalCrossentropy(),
+            loss = tf.keras.losses.categorical_crossentropy,
             metrics = ['accuracy']
         )
 
