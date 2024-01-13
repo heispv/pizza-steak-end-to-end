@@ -1,8 +1,9 @@
-AUGMENTATION: True
-IMAGE_SIZE: [224, 224, 3]
-BATCH_SIZE: 16
-INCLUDE_TOP: False
-EPOCHS: 10
-CLASSES: 2
-WEIGHTS: imagenet
-LEARNING_RATE: 0.001
+
+image_size: [160, 160, 3]
+batch_size: 16
+include_top: False
+epochs: 5
+classes: 2
+weights: imagenet
+learning_rate: 0.001
+validation_split: 0.2
