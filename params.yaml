@@ -2,7 +2,7 @@
 image_size: [160, 160, 3]
 batch_size: 16
 include_top: False
-epochs: 5
+epochs: 1
 classes: 2
 weights: imagenet
 learning_rate: 0.001
