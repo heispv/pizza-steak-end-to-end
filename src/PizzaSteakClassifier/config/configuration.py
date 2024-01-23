@@ -73,6 +73,8 @@ class ConfigurationManager:
         params = self.params
         base_model_preparation = self.config.base_model_preparation
         training_dir = os.path.join(self.config.data_ingestion.unzip_dir)
+        result_image_path = self.config.model_training.result_image_path
+        evaluation_pictures = self.config.model_training.evaluation_pictures
 
         create_directories([training.root_dir])
 
@@ -81,6 +83,8 @@ class ConfigurationManager:
             trained_model_path=Path(training.trained_model_path),
             update_base_model_path=Path(base_model_preparation.updated_base_model_path),
             training_data=Path(training_dir),
+            result_image_path=Path(result_image_path),
+            evaluation_pictures=Path(evaluation_pictures),
             params_epoch=params.epochs,
             params_batch_size=params.batch_size,
             params_image_size=params.image_size,

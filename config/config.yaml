@@ -20,3 +20,5 @@ prepare_callbacks:
 model_training:
   root_dir: artifacts/model_training
   trained_model_path: artifacts/model_training/trained_model.h5
+  result_image_path: artifacts/model_training/training_history.png
+  evaluation_pictures: artifacts/model_training/evaluation_pictures.png

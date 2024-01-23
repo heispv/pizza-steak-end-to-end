@@ -33,6 +33,8 @@ class TrainingConfig:
     trained_model_path: Path
     update_base_model_path: Path
     training_data: Path
+    result_image_path: Path
+    evaluation_pictures: Path
     params_epoch: int
     params_batch_size: int
     params_image_size: list

@@ -22,6 +22,8 @@ class ModelTrainigPipeline:
             training.get_base_model()
             training.data_preparation()
             training.train(callback_list=callback_list)
+            training.plot_and_save_history()
+            training.plot_validation_images_with_predictions()
 
 
     def run(self):
