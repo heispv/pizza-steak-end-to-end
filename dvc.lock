@@ -1,0 +1,87 @@
+schema: '2.0'
+stages:
+  data_ingestion:
+    cmd: python src\PizzaSteakClassifier\pipeline\stage_01_data_ingestion.py
+    deps:
+    - path: config\config.yaml
+      hash: md5
+      md5: a786ab7bd139afe279e8e351c725631a
+      size: 951
+    - path: src\PizzaSteakClassifier\pipeline\stage_01_data_ingestion.py
+      hash: md5
+      md5: 0b9eb6436dd02d2645e15422ae62a923
+      size: 1046
+    outs:
+    - path: artifacts\data_ingestion\pizza_steak_data
+      hash: md5
+      md5: d8e0cf3e22a828cdaf42c22739679314.dir
+      size: 111728720
+      nfiles: 2000
+  prepare_base_model:
+    cmd: python src\PizzaSteakClassifier\pipeline\stage_02_prepare_base_model.py
+    deps:
+    - path: config\config.yaml
+      hash: md5
+      md5: a786ab7bd139afe279e8e351c725631a
+      size: 951
+    - path: src\PizzaSteakClassifier\pipeline\stage_02_prepare_base_model.py
+      hash: md5
+      md5: 4bf18599eec00d5d7e4fcb8d3b1dd9ca
+      size: 1094
+    params:
+      params.yaml:
+        classes: 2
+        image_size:
+        - 160
+        - 160
+        - 3
+        include_top: false
+        learning_rate: 0.001
+        validation_split: 0.2
+        weights: imagenet
+    outs:
+    - path: artifacts\base_model_preparation
+      hash: md5
+      md5: 1c058b0252030e8823c31b82245444c2.dir
+      size: 18886536
+      nfiles: 2
+  training:
+    cmd: python src\PizzaSteakClassifier\pipeline\stage_03_train_model.py
+    deps:
+    - path: artifacts\base_model_preparation
+      hash: md5
+      md5: 1c058b0252030e8823c31b82245444c2.dir
+      size: 18886536
+      nfiles: 2
+    - path: artifacts\data_ingestion\pizza_steak_data
+      hash: md5
+      md5: d8e0cf3e22a828cdaf42c22739679314.dir
+      size: 111728720
+      nfiles: 2000
+    - path: config\config.yaml
+      hash: md5
+      md5: a786ab7bd139afe279e8e351c725631a
+      size: 951
+    - path: src\PizzaSteakClassifier\components\prepare_callbacks.py
+      hash: md5
+      md5: 7818d1b99ebd5a79ed1ec267d037e1b7
+      size: 960
+    - path: src\PizzaSteakClassifier\pipeline\stage_03_train_model.py
+      hash: md5
+      md5: 9d135fbde5db0f214cab37493610d718
+      size: 1503
+    params:
+      params.yaml:
+        batch_size: 16
+        epochs: 5
+        image_size:
+        - 160
+        - 160
+        - 3
+        validation_split: 0.2
+    outs:
+    - path: artifacts\model_training
+      hash: md5
+      md5: 36abd909112527eba9190f45c25b5a72.dir
+      size: 11603590
+      nfiles: 3

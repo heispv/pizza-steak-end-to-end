@@ -24,3 +24,6 @@ class PrepareBaseModelPipeline:
         except Exception as e:
             logger.exception(f"Exception in stage: {STAGE_NAME}")
             raise e
+        
+if __name__ == "__main__":
+        PrepareBaseModelPipeline().run()

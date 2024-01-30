@@ -1,0 +1,40 @@
+stages:
+
+  data_ingestion:
+    cmd: python src\PizzaSteakClassifier\pipeline\stage_01_data_ingestion.py
+    deps:
+      - src\PizzaSteakClassifier\pipeline\stage_01_data_ingestion.py
+      - config\config.yaml
+    outs:
+      - artifacts\data_ingestion\pizza_steak_data
+  
+  prepare_base_model:
+    cmd: python src\PizzaSteakClassifier\pipeline\stage_02_prepare_base_model.py
+    deps:
+      - src\PizzaSteakClassifier\pipeline\stage_02_prepare_base_model.py
+      - config\config.yaml
+    params:
+      - image_size
+      - learning_rate
+      - include_top
+      - weights
+      - classes
+      - validation_split
+    outs:
+      - artifacts\base_model_preparation
+  
+  training:
+    cmd: python src\PizzaSteakClassifier\pipeline\stage_03_train_model.py
+    deps:
+      - src\PizzaSteakClassifier\pipeline\stage_03_train_model.py
+      - src\PizzaSteakClassifier\components\prepare_callbacks.py
+      - config\config.yaml
+      - artifacts\data_ingestion\pizza_steak_data
+      - artifacts\base_model_preparation
+    params:
+      - epochs
+      - batch_size
+      - image_size
+      - validation_split
+    outs:
+      - artifacts\model_training

@@ -34,3 +34,6 @@ class ModelTrainigPipeline:
         except Exception as e:
             logger.exception(f"Exception in stage: {STAGE_NAME}")
             raise e
+
+if __name__ == "__main__":
+        ModelTrainigPipeline().run()
