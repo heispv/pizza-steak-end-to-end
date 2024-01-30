@@ -12,9 +12,8 @@ class PredictionPipeline:
         test_image = image.load_img(self.file_name, target_size=(160, 160))
         test_image = image.img_to_array(test_image)
         test_image = np.expand_dims(test_image, axis=0)
-        result = np.argmax(model.predict(test_image), axis=1)
+        predicted_label = model.predict(test_image)
 
-        label_map = {0: 'Pizza', 1: 'Steak'}
-        predicted_label = label_map[result[0]]
+        res = "Steak" if predicted_label >= 0 else "Pizza"
 
-        return [{ "image" : predicted_label}]
+        return [{"image" : res}]
