@@ -161,4 +161,4 @@ cython_debug/
 
 artifacts/
 
-inputImage.jpg
+*.jpg
