@@ -20,7 +20,7 @@ class PrepareBaseModelPipeline:
         try:
             logger.info(f"-------------Running stage: {STAGE_NAME}-------------")
             self.main()
-            logger.info(f"-------------Completed stage: {STAGE_NAME}------------\nx==============================x")
+            logger.info(f"-------------Completed stage: {STAGE_NAME}------------\nx=============================x")
         except Exception as e:
             logger.exception(f"Exception in stage: {STAGE_NAME}")
             raise e

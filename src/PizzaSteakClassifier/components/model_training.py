@@ -106,7 +106,7 @@ class Training:
 
         # Predict labels
         predicted_labels = self.model.predict(images)
-        predicted_labels = np.argmax(predicted_labels, axis=1)
+        res = ["Steak" if label >= 0 else "Pizza" for label in predicted_labels]
 
         # Plotting
         plt.figure(figsize=(16, 16))
@@ -114,8 +114,7 @@ class Training:
             plt.subplot(4, 4, i + 1)
             plt.imshow(images[i].numpy().astype("uint8"))
             true_label = label_map[labels[i].numpy()]
-            predicted_label = label_map[predicted_labels[i]]
-            plt.title(f"True: {true_label}\nPredicted: {predicted_label}")
+            plt.title(f"True: {true_label}\nPredicted: {res[i]}")
             plt.axis("off")
 
         # Saving the plot

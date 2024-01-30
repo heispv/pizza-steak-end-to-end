@@ -26,8 +26,8 @@ stages:
       size: 951
     - path: src\PizzaSteakClassifier\pipeline\stage_02_prepare_base_model.py
       hash: md5
-      md5: 4bf18599eec00d5d7e4fcb8d3b1dd9ca
-      size: 1094
+      md5: 46957dffd6d3c036926fede8aecffef4
+      size: 1093
     params:
       params.yaml:
         classes: 2
@@ -42,7 +42,7 @@ stages:
     outs:
     - path: artifacts\base_model_preparation
       hash: md5
-      md5: 1c058b0252030e8823c31b82245444c2.dir
+      md5: 062c01d45ee1f83768a7af9771415dc8.dir
       size: 18886536
       nfiles: 2
   training:
@@ -50,7 +50,7 @@ stages:
     deps:
     - path: artifacts\base_model_preparation
       hash: md5
-      md5: 1c058b0252030e8823c31b82245444c2.dir
+      md5: 062c01d45ee1f83768a7af9771415dc8.dir
       size: 18886536
       nfiles: 2
     - path: artifacts\data_ingestion\pizza_steak_data
@@ -68,8 +68,8 @@ stages:
       size: 960
     - path: src\PizzaSteakClassifier\pipeline\stage_03_train_model.py
       hash: md5
-      md5: 9d135fbde5db0f214cab37493610d718
-      size: 1503
+      md5: 8f7a1cf2735a50c0f848fd4a967f8121
+      size: 1504
     params:
       params.yaml:
         batch_size: 16
@@ -82,6 +82,6 @@ stages:
     outs:
     - path: artifacts\model_training
       hash: md5
-      md5: 36abd909112527eba9190f45c25b5a72.dir
-      size: 11603590
+      md5: 9c1eec4e21e162313d79f230c928d145.dir
+      size: 11606958
       nfiles: 3

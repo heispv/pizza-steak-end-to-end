@@ -36,4 +36,4 @@ class ModelTrainigPipeline:
             raise e
 
 if __name__ == "__main__":
-        ModelTrainigPipeline().run()
+        ModelTrainigPipeline().run() 
