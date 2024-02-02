@@ -68,8 +68,8 @@ stages:
       size: 960
     - path: src\PizzaSteakClassifier\pipeline\stage_03_train_model.py
       hash: md5
-      md5: 8f7a1cf2735a50c0f848fd4a967f8121
-      size: 1504
+      md5: 9d135fbde5db0f214cab37493610d718
+      size: 1503
     params:
       params.yaml:
         batch_size: 16
@@ -82,6 +82,6 @@ stages:
     outs:
     - path: artifacts\model_training
       hash: md5
-      md5: 9c1eec4e21e162313d79f230c928d145.dir
-      size: 11606958
+      md5: 503a318f476dbe1e6bcbbcc28fb6e11c.dir
+      size: 11603872
       nfiles: 3
